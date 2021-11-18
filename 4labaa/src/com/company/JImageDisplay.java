@@ -2,27 +2,22 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
 public class JImageDisplay extends JComponent {
     private BufferedImage image;
-    // объявление изображения и его параметров
-    public JImageDisplay(int width, int height) {
+    public JImageDisplay(int width, int height) {// объявление изображения и его параметров
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Dimension dimension = new Dimension(width, height);
         super.setPreferredSize(dimension); }
-    // метод отрисовки изображения
-    public void paintComponent(Graphics graphics) {
+    public void paintComponent(Graphics graphics) {// метод отрисовки изображения
         super.paintComponent(graphics);
         graphics.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null); }
-    // очистка изображения (устанавливает все пиксели // в черный цвет)
-    public void clearImage() {
+    public void clearImage() {// очистка изображения (закрашивает все пиксели в черный цвет)
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
                 drawPixel(i, j, 0); }
         }
     }
-    // задание цвета конкретному пикселю
-    public void drawPixel(int x, int y, int rgbColor) {
+    public void drawPixel(int x, int y, int rgbColor) {// задание цвета конкретному пикселю
         image.setRGB(x, y, rgbColor); }
     public BufferedImage getImage() {
         return image; }
